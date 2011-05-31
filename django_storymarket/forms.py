@@ -17,7 +17,7 @@ class StorymarketSyncForm(forms.ModelForm):
     """    
     class Meta:
         model = SyncedObject
-        fields = ['org', 'category', 'tags', 'pricing', 'rights']
+        fields = ['org', 'sub_type', 'category', 'tags', 'pricing', 'rights']
         
     def __init__(self, *args, **kwargs):
         super(StorymarketSyncForm, self).__init__(*args, **kwargs)
@@ -28,6 +28,9 @@ class StorymarketSyncForm(forms.ModelForm):
                                                          coerce=int)
         self.fields['category'] = forms.TypedChoiceField(label='Category',
                                                          choices=self._choices('subcategories'),
+                                                         coerce=int)
+        self.fields['sub_type'] = forms.TypedChoiceField(label='Sub type',
+                                                         choices=self._choices('sub_type'),
                                                          coerce=int)
         self.fields['pricing']  = forms.TypedChoiceField(label='Pricing',
                                                          choices=self._choices('pricing'),

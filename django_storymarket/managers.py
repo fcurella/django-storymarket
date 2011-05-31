@@ -37,6 +37,7 @@ class SyncedObjectManager(models.Manager):
             tags             = storymarket_obj.tags,
             org              = storymarket_obj.org.id,
             category         = storymarket_obj.category.id,
+            sub_type         = storymarket_obj.sub_type.id,
             pricing          = (storymarket_obj.pricing_scheme.id if storymarket_obj.pricing_scheme else None),
             rights           = (storymarket_obj.rights_scheme.id if storymarket_obj.rights_scheme else None),
             last_updated     = datetime.datetime.now(),

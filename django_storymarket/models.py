@@ -32,6 +32,7 @@ class SyncedObject(models.Model):
     tags     = models.CharField(max_length=500)
     org      = models.PositiveIntegerField()
     category = models.PositiveIntegerField()
+    sub_type = models.PositiveIntegerField()
     pricing  = models.PositiveIntegerField(blank=True, null=True)
     rights   = models.PositiveIntegerField(blank=True, null=True)
     
