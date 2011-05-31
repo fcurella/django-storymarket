@@ -10,7 +10,7 @@ settings.configure(
     DATABASES = {
         'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': ':memory;'}
     },
-    INSTALLED_APPS = ['django_storymarket', 'django.contrib.contenttypes', 'django.contrib.auth'],
+    INSTALLED_APPS = ['django_storymarket', 'django.contrib.contenttypes', 'django.contrib.auth', 'south'],
     TEST_RUNNER = "django_nose.NoseTestSuiteRunner",
     STORYMARKET_API_KEY = 'APIKEY',
 )

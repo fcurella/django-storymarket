@@ -24,6 +24,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django_storymarket',
     'example',
+    'south'
 )
 TEMPLATE_DIRS = []
 
