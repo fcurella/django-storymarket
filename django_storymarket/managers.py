@@ -31,13 +31,14 @@ class SyncedObjectManager(models.Manager):
         
         Returns ``(SyncedObject, created)``, just like ``get_or_create()``.
         """
+        sm_type = storymarket_obj.__class__.__name__.lower()
         defaults = dict(
-            storymarket_type = storymarket_obj.__class__.__name__.lower(),
+            storymarket_type = sm_type,
             storymarket_id   = storymarket_obj.id,
             tags             = storymarket_obj.tags,
             org              = storymarket_obj.org.id,
             category         = storymarket_obj.category.id,
-            sub_type         = storymarket_obj.sub_type.id,
+            sub_type         = (storymarket_obj.sub_type.id if sm_type != 'package' else None),
             pricing          = (storymarket_obj.pricing_scheme.id if storymarket_obj.pricing_scheme else None),
             rights           = (storymarket_obj.rights_scheme.id if storymarket_obj.rights_scheme else None),
             last_updated     = datetime.datetime.now(),
