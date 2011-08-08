@@ -30,7 +30,7 @@ class StorymarketSyncForm(forms.ModelForm):
                                                          choices=self._choices('subcategories'),
                                                          coerce=int)
         self.fields['sub_type'] = forms.TypedChoiceField(label='Sub type',
-                                                         choices=self._choices('sub_type'),
+                                                         choices=self._choices('sub_types'),
                                                          coerce=int)
         self.fields['pricing']  = forms.TypedChoiceField(label='Pricing',
                                                          choices=self._choices('pricing'),
