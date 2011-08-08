@@ -105,6 +105,7 @@ class StorymarketUploaderInlineFormset(generic.BaseGenericInlineFormSet):
             sm_data = converters.convert(self.instance)
             sm_type = sm_data.pop('type')
             sm_data.update(form.cleaned_data)
+            sm_data.pop('id', None)
             so, created = save_to_storymarket(self.instance, sm_type, sm_data)
             if created:
                 self.new_objects.append(so)
