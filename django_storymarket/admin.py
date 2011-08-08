@@ -1,9 +1,6 @@
 from __future__ import absolute_import
 
-import storymarket
-
 from django import template
-from django.conf import settings
 from django.contrib import admin
 from django.contrib.admin import helpers
 from django.contrib.admin.util import model_ngettext
