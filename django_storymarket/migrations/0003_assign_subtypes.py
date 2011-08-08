@@ -21,13 +21,13 @@ class Migration(DataMigration):
             'data': stm.filter(type='data',is_default=True)[0]
         }
         
-        for obj in orm['SyncedObject'].objects.all():
+        for obj in orm['django_storymarket.SyncedObject'].objects.all():
             obj.sub_type = defaults[obj.storymarket_type].id
             obj.save()
 
     def backwards(self, orm):
         "Write your backwards methods here."
-        for obj in orm['SyncedObject'].objects.all():
+        for obj in orm['django_storymarket.SyncedObject'].objects.all():
             obj.sub_type = None
             obj.save()
 
