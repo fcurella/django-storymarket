@@ -2,6 +2,15 @@ import datetime
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 
+def serialize_tags(tags):
+    escaped = []
+    for t in tags:
+        if ' ' in t:
+            escaped.append('"%s"' % t)
+        else:
+            escaped.append(t)
+    return ', '.join(escaped)
+
 class SyncedObjectManager(models.Manager):
     def for_model(self, obj):
         """
@@ -34,7 +43,7 @@ class SyncedObjectManager(models.Manager):
         defaults = dict(
             storymarket_type = storymarket_obj.__class__.__name__.lower(),
             storymarket_id   = storymarket_obj.id,
-            tags             = storymarket_obj.tags,
+            tags             = serialize_tags(storymarket_obj.tags),
             org              = storymarket_obj.org.id,
             category         = storymarket_obj.category.id,
             pricing          = (storymarket_obj.pricing_scheme.id if storymarket_obj.pricing_scheme else None),
