@@ -110,7 +110,7 @@ class StorymarketUploaderInlineFormset(generic.BaseGenericInlineFormSet):
             if created:
                 self.new_objects.append(so)
             else:
-                self.changed_objects.append(so)
+                self.changed_objects.append((so, []))
             
         return self.new_objects + self.changed_objects
 
